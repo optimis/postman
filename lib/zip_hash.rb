@@ -5,10 +5,10 @@ class ZipHash
   def initialize(path)
     @data = {}
 
-    loadData(path)
+    load_data(path)
   end
 
-  def loadData(path)
+  def load_data(path)
     CSV.foreach(path, :col_sep => "\t") do |row|
       @data[row[1]] = {
         :city => row[2],
