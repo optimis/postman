@@ -6,8 +6,9 @@ require './lib/zip_hash'
 
 module Postman
   class API < Sinatra::Base
-    p 'loading zip data...'
+    p 'Loading zip data...'
     zip_hash = ZipHash.new('./data/US.txt')
+    p 'Done!'
 
     get '/:zip' do
       data = zip_hash.get(params[:zip])
