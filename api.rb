@@ -1,5 +1,6 @@
 require 'sinatra'
-require 'sinatra/json'
+require 'multi_json'
+require 'oj'
 
 require './lib/zip_hash'
 
@@ -10,7 +11,7 @@ module Postman
 
     get '/:zip' do
       data = zip_hash.get(params[:zip])
-      json data
+      MultiJson.dump(data)
     end
   end
 end

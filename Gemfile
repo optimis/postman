@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'sinatra-contrib'
+gem 'oj'
 gem 'rack-test'
-gem 'json'
-gem 'fastercsv'
