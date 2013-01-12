@@ -1,4 +1,4 @@
 postman
 =======
 
-web api that takes zip code returns city/state.
+web api that takes zip code and returns city/state.
