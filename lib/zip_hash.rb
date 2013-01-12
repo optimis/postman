@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'fastercsv'
+require 'csv'
 
 class ZipHash
   def initialize(path)
@@ -9,7 +9,7 @@ class ZipHash
   end
 
   def loadData(path)
-    FasterCSV.foreach(path, :col_sep => "\t") do |row|
+    CSV.foreach(path, :col_sep => "\t") do |row|
       @data[row[1]] = {
         :city => row[2],
         :state => row[3],
