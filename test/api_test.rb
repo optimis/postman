@@ -15,17 +15,17 @@ class ApiTest < Test::Unit::TestCase
   end
 
   def test_it_returns_success_response
-    get '/', :zip => '90293'
+    get '/90293'
 
     response = JSON.parse(last_response.body)
     assert_equal 200, last_response.status
-    assert_equal 'Playa del Rey', response['city']
+    assert_equal 'Playa Del Rey', response['city']
     assert_equal 'California', response['state']
     assert_equal 'CA', response['state-abbreviation']
   end
 
   def test_it_returns_error_response
-    get '/', :zip => 'notvalid'
+    get '/notvalid'
 
     assert_not_equal 200, last_response.status
   end
