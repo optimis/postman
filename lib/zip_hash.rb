@@ -10,9 +10,9 @@ class ZipHash
   def load_data(path)
     CSV.foreach(path, :col_sep => "\t") do |row|
       @data[row[1]] = {
-        :city => row[2],
-        :state => row[3],
-        :'state-abbreviation' => row[4]
+        'city' => row[2],
+        'state' => row[3],
+        'stateAbbreviation' => row[4]
       }
     end
   end
