@@ -29,11 +29,7 @@ module Postman
     get '/:zip' do
       data = zip_hash.get(params[:zip])
       if data
-        if params[:callback]
-          jsonp data
-        else
-          MultiJson.dump(data)
-        end
+        jsonp data
       else
         403
       end
