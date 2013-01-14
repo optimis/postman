@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/jsonp'
 require 'multi_json'
 require 'oj'
 
@@ -6,6 +7,8 @@ require './lib/zip_hash'
 
 module Postman
   class API < Sinatra::Base
+    helpers Sinatra::Jsonp
+
     # load data
     p 'Loading zip data...'
     zip_hash = ZipHash.new('./data/US.txt')
@@ -26,12 +29,10 @@ module Postman
     get '/:zip' do
       data = zip_hash.get(params[:zip])
       if data
-        json = MultiJson.dump(data)
         if params[:callback]
-          content_type 'application/javascript', :charset => 'utf-8'
-          "#{params[:callback]}(#{json});"
+          jsonp data
         else
-          json
+          MultiJson.dump(data)
         end
       else
         403
