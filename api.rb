@@ -26,7 +26,13 @@ module Postman
     get '/:zip' do
       data = zip_hash.get(params[:zip])
       if data
-        MultiJson.dump(data)
+        json = MultiJson.dump(data)
+        if params[:callback]
+          content_type 'application/javascript', :charset => 'utf-8'
+          "#{params[:callback]}(#{json});"
+        else
+          json
+        end
       else
         403
       end
