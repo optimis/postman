@@ -26,6 +26,10 @@ module Postman
       MultiJson.dump({ :error => 'Not Found' })
     end
 
+    get '/ping' do
+      MultiJson.dump({})
+    end
+
     get '/:zip' do
       data = zip_hash.get(params[:zip])
       if data
