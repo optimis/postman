@@ -27,7 +27,7 @@ module Postman
     end
 
     get '/ping' do
-      jsonp {}
+      jsonp({ :error => nil })
     end
 
     get '/:zip' do
