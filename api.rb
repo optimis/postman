@@ -27,7 +27,7 @@ module Postman
     end
 
     get '/ping' do
-      MultiJson.dump({})
+      jsonp {}
     end
 
     get '/:zip' do
